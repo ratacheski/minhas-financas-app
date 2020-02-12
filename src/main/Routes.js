@@ -26,21 +26,11 @@ function RotaAutenticada({component: Component, isUsuarioAutenticado, ...props})
     )
 }
 
-function RotaRaiz({...props}) {
-    return (
-        <Route {...props} render={(componentProps) => {
-            return (
-                <Redirect to={{pathname: '/login', state: {from: componentProps.location}}}/>
-            )
-        }}/>
-    )
-}
-
 function Routes(props) {
     return (
         <HashRouter>
             <Switch>
-                <RotaRaiz path="/"/>
+                <RotaAutenticada path="/"  isUsuarioAutenticado={props.isUsuarioAutenticado} exact component={Home} />
                 <Route path="/login" component={Login}/>
                 <Route path="/cadastro-usuario" component={CadastroUsuario}/>
                 <RotaAutenticada path="/home" isUsuarioAutenticado={props.isUsuarioAutenticado} component={Home}/>
