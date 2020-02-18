@@ -1,21 +1,26 @@
 import React from 'react'
-import Card from '../components/Card'
+import { Card } from 'primereact/card';
 import FormGroup from '../components/FormGroup'
-import {withRouter} from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import UsuarioService from '../app/services/usuarioService'
-import {showErrorMessage} from '../components/Toastr'
-import {AuthContext} from '../main/AuthProvider'
+import { showErrorMessage } from '../components/Toastr'
+import { AuthContext } from '../main/AuthProvider'
 
 class Login extends React.Component {
-
-    state = {
-        email: '',
-        senha: ''
-    }
 
     constructor() {
         super();
         this.service = new UsuarioService();
+        this.state = {
+            email: '',
+            senha: ''
+        }
+    }
+
+    componentDidMount() {
+        document.body.style.backgroundImage = "url('/background.jpg')";
+        document.body.style.backgroundRepeat = "no-repeat";
+        document.body.style.backgroundSize = "cover";
     }
 
     entrar = () => {
@@ -36,38 +41,45 @@ class Login extends React.Component {
 
     render() {
         return (
-            <div className="row">
-                <div className="col-md-6" style={{position: 'relative', left: '300px'}}>
+            <div className="row h-100">
+                <div className="col-md-6 mx-auto align-self-center">
                     <div className="bs-docs-section">
-                        <Card title="Login">
+                        <Card className="login-panel">
+                            <div className="row mx-auto">
+                                <img className="mx-auto" src="logo192.png" alt="" />
+                            </div>
                             <div className="row">
                                 <div className="col-lg-12">
                                     <div className="bs-component">
                                         <fieldset>
                                             <FormGroup label="Email" htmlFor="exampleInputEmail1">
                                                 <input type="email" className="form-control"
-                                                       id="exampleInputEmail1"
-                                                       aria-describedby="emailHelp"
-                                                       placeholder="Digite o Email"
-                                                       value={this.state.email}
-                                                       onChange={e => this.setState({email: e.target.value})}/>
+                                                    id="exampleInputEmail1"
+                                                    aria-describedby="emailHelp"
+                                                    placeholder="Digite o Email"
+                                                    value={this.state.email}
+                                                    onChange={e => this.setState({ email: e.target.value })} />
                                             </FormGroup>
                                             <FormGroup label="Senha" htmlFor="exampleInputPassword1">
                                                 <input type="password" className="form-control"
-                                                       id="exampleInputPassword1"
-                                                       placeholder="Senha"
-                                                       value={this.state.senha}
-                                                       onChange={e => this.setState({senha: e.target.value})}/>
+                                                    id="exampleInputPassword1"
+                                                    placeholder="Senha"
+                                                    value={this.state.senha}
+                                                    onChange={e => this.setState({ senha: e.target.value })} />
                                             </FormGroup>
-                                            <button onClick={this.entrar} className="btn btn-success">
-                                                <i className="pi pi-sign-in"/> Entrar
-                                            </button>
-                                            <button onClick={this.cadastrar} className="btn btn-danger">
-                                                <i className="pi pi-plus"/> Cadastrar
-                                            </button>
                                         </fieldset>
                                     </div>
                                 </div>
+                            </div>
+                            <div className="row">
+                                <button onClick={this.entrar} className="btn mx-auto w-75 btn-login btn-success">
+                                    <i className="pi pi-sign-in" /> Entrar
+                                            </button>
+                            </div>
+                            <div className="row">
+                                <button onClick={this.cadastrar} className="btn mx-auto w-75 btn-danger">
+                                    <i className="pi pi-plus" /> Cadastrar
+                                            </button>
                             </div>
                         </Card>
                     </div>

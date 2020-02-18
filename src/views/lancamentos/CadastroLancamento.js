@@ -3,7 +3,7 @@ import {withRouter} from 'react-router-dom';
 
 import FormGroup from "../../components/FormGroup";
 import SelectMenu from "../../components/SelectMenu";
-import Card from '../../components/Card';
+import {Card} from 'primereact/card';
 import LocalStorageService from "../../app/services/localStorageService";
 import {showErrorMessage, showSuccessMessage} from '../../components/Toastr'
 import LancamentoService from "../../app/services/lancamentoService";

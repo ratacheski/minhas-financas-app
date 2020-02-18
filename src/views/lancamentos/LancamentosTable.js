@@ -1,5 +1,6 @@
 import React from 'react'
 import currencyFormatter from 'currency-formatter'
+import {DataTable} from 'primereact/datatable';
 
 export default (props) => {
 

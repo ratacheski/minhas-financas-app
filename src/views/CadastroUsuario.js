@@ -1,10 +1,10 @@
 import React from 'react'
 
-import Card from '../components/Card'
+import { Card } from 'primereact/card';
 import FormGroup from '../components/FormGroup'
 import UsuarioService from '../app/services/usuarioService'
-import {withRouter} from 'react-router-dom'
-import {showSuccessMessage, showErrorMessage} from '../components/Toastr'
+import { withRouter } from 'react-router-dom'
+import { showSuccessMessage, showErrorMessage } from '../components/Toastr'
 
 class CadastroUsuario extends React.Component {
     state = {
@@ -19,9 +19,15 @@ class CadastroUsuario extends React.Component {
         this.service = new UsuarioService();
     }
 
+    componentDidMount() {
+        document.body.style.backgroundImage = "url('/background.jpg')";
+        document.body.style.backgroundRepeat = "no-repeat";
+        document.body.style.backgroundSize = "cover";
+    }
+
     cadastrar = () => {
-        const {nome, email, senha, senhaRepeticao} = this.state;
-        const usuario = {nome, email, senha, senhaRepeticao};
+        const { nome, email, senha, senhaRepeticao } = this.state;
+        const usuario = { nome, email, senha, senhaRepeticao };
         try {
             this.service.validarUsuario(usuario);
         } catch (erro) {
@@ -48,44 +54,48 @@ class CadastroUsuario extends React.Component {
 
     render() {
         return (
-            <Card title="Cadastro de Usuário">
-                <div className="row">
-                    <div className="col-lg-12">
-                        <div className="bs-component">
-                            <FormGroup label="Nome: *" htmlFor="inputNome">
-                                <input type="text" id="inputNome" name="nome"
-                                       className="form-control"
-                                       onChange={e => this.setState({nome: e.target.value})}/>
-                            </FormGroup>
-                            <FormGroup label="Email: *" htmlFor="inputEmail">
-                                <input type="text" id="inputEmail" name="email"
-                                       className="form-control"
-                                       onChange={e => this.setState({email: e.target.value})}/>
-                            </FormGroup>
-                            <FormGroup label="Senha: *" htmlFor="inputSenha">
-                                <input type="password" id="inputSenha" name="senha"
-                                       className="form-control"
-                                       onChange={e => this.setState({senha: e.target.value})}/>
-                            </FormGroup>
-                            <FormGroup label="Repita a Senha: *" htmlFor="inputRepitaSenha">
-                                <input type="password" id="inputRepitaSenha" name="senhaRepeticao"
-                                       className="form-control"
-                                       onChange={e => this.setState({senhaRepeticao: e.target.value})}/>
-                            </FormGroup>
+            <div className="row h-100">
+                <div className="col-md-6 mx-auto align-self-center">
+                    <Card title="Cadastro de Usuário" className="cadastrar-panel">
+                        <div className="row">
+                            <div className="col-lg-12">
+                                <div className="bs-component">
+                                    <FormGroup label="Nome: *" htmlFor="inputNome">
+                                        <input type="text" id="inputNome" name="nome"
+                                            className="form-control"
+                                            onChange={e => this.setState({ nome: e.target.value })} />
+                                    </FormGroup>
+                                    <FormGroup label="Email: *" htmlFor="inputEmail">
+                                        <input type="text" id="inputEmail" name="email"
+                                            className="form-control"
+                                            onChange={e => this.setState({ email: e.target.value })} />
+                                    </FormGroup>
+                                    <FormGroup label="Senha: *" htmlFor="inputSenha">
+                                        <input type="password" id="inputSenha" name="senha"
+                                            className="form-control"
+                                            onChange={e => this.setState({ senha: e.target.value })} />
+                                    </FormGroup>
+                                    <FormGroup label="Repita a Senha: *" htmlFor="inputRepitaSenha">
+                                        <input type="password" id="inputRepitaSenha" name="senhaRepeticao"
+                                            className="form-control"
+                                            onChange={e => this.setState({ senhaRepeticao: e.target.value })} />
+                                    </FormGroup>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-lg-12">
-                        <div className="float-right">
-                            <button type="button" className="btn btn-success" onClick={this.cadastrar}>
-                                <i className="pi pi-save"/> Salvar</button>
-                            <button type="button" className="btn btn-danger" onClick={this.cancelar}>
-                                <i className="pi pi-times"/> Cancelar</button>
+                        <div className="row">
+                            <div className="col-lg-12">
+                                <div className="float-right">
+                                    <button type="button" className="btn btn-success" onClick={this.cadastrar}>
+                                        <i className="pi pi-save" /> Salvar</button>
+                                    <button type="button" className="btn btn-danger" onClick={this.cancelar}>
+                                        <i className="pi pi-times" /> Cancelar</button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    </Card>
                 </div>
-            </Card>
+            </div>
         )
     }
 }

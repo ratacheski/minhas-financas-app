@@ -23,11 +23,11 @@ function showMessage(title, message, type) {
 }
 
 export function showErrorMessage(message) {
-    showMessage('Erro', message, 'error');
+    showMessage(null, message, 'error');
 }
 
 export function showSuccessMessage(message) {
-    showMessage('Sucesso', message, 'success');
+    showMessage(null, message, 'success');
 }
 
 export function showInfoMessage(message) {
@@ -35,5 +35,5 @@ export function showInfoMessage(message) {
 }
 
 export function showWarningMessage(message) {
-    showMessage('Alerta', message, 'warning');
+    showMessage(null, message, 'warning');
 }

@@ -17,9 +17,11 @@ class App extends React.Component {
     render() {
         return (
             <AuthProvider>
+                <div style={{display:'flex'}}>
                 <Navbar/>
                 <div className="container">
                     <Routes/>
+                </div>
                 </div>
             </AuthProvider>
         )

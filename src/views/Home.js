@@ -13,7 +13,8 @@ class Home extends React.Component {
         this.usuarioService = new UsuarioService();
     }
 
-    componentDidMount() {
+    componentDidMount() {        
+        document.body.style.background='#ccc';
         const sessionUser = this.context.usuarioAutenticado;
         this.usuarioService
             .obterSaldoUsuario(sessionUser.id)

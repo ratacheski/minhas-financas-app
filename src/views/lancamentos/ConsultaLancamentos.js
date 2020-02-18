@@ -1,6 +1,6 @@
 import React from 'react'
 import {withRouter} from 'react-router-dom'
-import Card from '../../components/Card'
+import {Card} from 'primereact/card';
 import FormGroup from '../../components/FormGroup'
 import SelectMenu from '../../components/SelectMenu'
 import LancamentosTable from './LancamentosTable'
